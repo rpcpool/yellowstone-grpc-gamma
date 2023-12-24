@@ -8,7 +8,7 @@ on:
   pull_request:
   push:
     branches:
-      - 'master'
+      - 'v1.17-gamma'
   workflow_dispatch:
 
 env:
@@ -51,10 +51,10 @@ jobs:
               target
           key: ${{ matrix.os }}-cargo-${{ hashFiles('rust-toolchain.toml') }}-${{ hashFiles('**/Cargo.lock') }}-0001
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libsasl2-dev
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y libsasl2-dev
 
       - name: cargo tree
         run: |
