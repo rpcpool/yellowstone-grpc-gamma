@@ -185,9 +185,9 @@ impl ArgsAction {
                             .context("failed to get message from gRPC")?;
 
                         match &message {
-                            SubscribeUpdate { filters: _, update_oneof: Some(UpdateOneof::Ping(_)) } => prom::recv_inc(GprcMessageKind::Ping),
-                            SubscribeUpdate { filters: _, update_oneof: Some(UpdateOneof::Pong(_)) } => prom::recv_inc(GprcMessageKind::Pong),
-                            SubscribeUpdate { filters: _, update_oneof: Some(value) } => {
+                            SubscribeUpdate { filters: _, update_oneof: Some(UpdateOneof::Ping(_)), timestamp: _ } => prom::recv_inc(GprcMessageKind::Ping),
+                            SubscribeUpdate { filters: _, update_oneof: Some(UpdateOneof::Pong(_)), timestamp: _ } => prom::recv_inc(GprcMessageKind::Pong),
+                            SubscribeUpdate { filters: _, update_oneof: Some(value), timestamp: _ } => {
                                 if let UpdateOneof::Slot(slot) = value {
                                     prom::set_slot_tip(
                                         CommitmentLevel::try_from(slot.status).expect("valid commitment"),
@@ -204,7 +204,7 @@ impl ArgsAction {
 
                                 prom::recv_inc(prom_kind);
                             },
-                            SubscribeUpdate { filters: _, update_oneof: None } => anyhow::bail!("received empty updat emessage"),
+                            SubscribeUpdate { filters: _, update_oneof: None, timestamp: _ } => anyhow::bail!("received empty updat emessage"),
                         };
                     }
                 };
