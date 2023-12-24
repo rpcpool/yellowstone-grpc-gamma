@@ -18,6 +18,7 @@ pub mod prelude {
 }
 
 pub use prost;
+pub use prost_types;
 pub use tonic;
 
 pub mod convert_to {

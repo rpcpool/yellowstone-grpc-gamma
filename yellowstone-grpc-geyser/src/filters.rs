@@ -17,15 +17,20 @@ use {
         collections::{HashMap, HashSet},
         iter::FromIterator,
         str::FromStr,
+        time::SystemTime,
     },
-    yellowstone_grpc_proto::prelude::{
-        subscribe_request_filter_accounts_filter::Filter as AccountsFilterDataOneof,
-        subscribe_request_filter_accounts_filter_memcmp::Data as AccountsFilterMemcmpOneof,
-        subscribe_update::UpdateOneof, CommitmentLevel, SubscribeRequest,
-        SubscribeRequestAccountsDataSlice, SubscribeRequestFilterAccounts,
-        SubscribeRequestFilterAccountsFilter, SubscribeRequestFilterBlocks,
-        SubscribeRequestFilterBlocksMeta, SubscribeRequestFilterEntry, SubscribeRequestFilterSlots,
-        SubscribeRequestFilterTransactions, SubscribeUpdate, SubscribeUpdatePong,
+    yellowstone_grpc_proto::{
+        prelude::{
+            subscribe_request_filter_accounts_filter::Filter as AccountsFilterDataOneof,
+            subscribe_request_filter_accounts_filter_memcmp::Data as AccountsFilterMemcmpOneof,
+            subscribe_update::UpdateOneof, CommitmentLevel, SubscribeRequest,
+            SubscribeRequestAccountsDataSlice, SubscribeRequestFilterAccounts,
+            SubscribeRequestFilterAccountsFilter, SubscribeRequestFilterBlocks,
+            SubscribeRequestFilterBlocksMeta, SubscribeRequestFilterEntry,
+            SubscribeRequestFilterSlots, SubscribeRequestFilterTransactions, SubscribeUpdate,
+            SubscribeUpdatePong,
+        },
+        prost_types::Timestamp,
     },
 };
 
@@ -113,6 +118,7 @@ impl Filter {
                     Some(SubscribeUpdate {
                         filters,
                         update_oneof: Some(message.to_proto(&self.accounts_data_slice)),
+                        timestamp: Some(Timestamp::from(SystemTime::now())),
                     })
                 }
             })
@@ -123,6 +129,7 @@ impl Filter {
         self.ping.map(|id| SubscribeUpdate {
             filters: vec![],
             update_oneof: Some(UpdateOneof::Pong(SubscribeUpdatePong { id })),
+            timestamp: Some(Timestamp::from(SystemTime::now())),
         })
     }
 }

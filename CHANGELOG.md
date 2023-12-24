@@ -16,6 +16,17 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 ### Breaking
 
+## 2023-12-24
+
+- yellowstone-grpc-client-1.13.0+solana.1.16.21
+- yellowstone-grpc-geyser-1.12.0+solana.1.16.21
+- yellowstone-grpc-proto-1.12.0+solana.1.16.21
+- yellowstone-grpc-tools-1.0.0-rc.10+solana.1.16.21
+
+### Features
+
+- proto: add `timestamp` field to `SubscribeUpdate` message
+
 ## 2023-12-08
 
 - yellowstone-grpc-tools-1.0.0-rc.9+solana.1.16.21
