@@ -16,6 +16,17 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 ### Breaking
 
+## 2024-01-09
+
+- yellowstone-grpc-client-1.13.0+solana.1.17.15.gamma
+- yellowstone-grpc-geyser-1.12.0+solana.1.17.15.gamma
+- yellowstone-grpc-proto-1.12.0+solana.1.17.15.gamma
+- yellowstone-grpc-tools-1.0.0-rc.9+solana.1.17.15.gamma
+
+### Features
+
+- proto: add `timestamp` field to `SubscribeUpdate` message
+
 ## 2024-01-08
 
 - yellowstone-grpc-client-1.13.0+solana.1.17.15
@@ -27,6 +38,17 @@ The minor version will be incremented upon a breaking change and the patch versi
 
 - proto: add more convert functions ([#264](https://github.com/rpcpool/yellowstone-grpc/pull/264))
 - geyser: set plugin name to `{name}-{version}` ([#270](https://github.com/rpcpool/yellowstone-grpc/pull/270))
+
+## 2023-12-24
+
+- yellowstone-grpc-client-1.13.0+solana.1.16.21
+- yellowstone-grpc-geyser-1.12.0+solana.1.16.21
+- yellowstone-grpc-proto-1.12.0+solana.1.16.21
+- yellowstone-grpc-tools-1.0.0-rc.10+solana.1.16.21
+
+### Features
+
+- proto: add `timestamp` field to `SubscribeUpdate` message
 
 ## 2023-12-22
 
