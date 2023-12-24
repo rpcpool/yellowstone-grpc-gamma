@@ -10,6 +10,7 @@ on:
     branches:
       - 'master'
       - 'v1.16'
+      - 'v1.17-gamma'
   workflow_dispatch:
 
 env:
@@ -23,6 +24,9 @@ jobs:
     runs-on: ["${{ matrix.os }}"]
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo apt-get install -y libsasl2-dev
 
       - name: Set rust version
         run: |
@@ -52,10 +56,10 @@ jobs:
               target
           key: ${{ matrix.os }}-cargo-${{ hashFiles('rust-toolchain.toml') }}-${{ hashFiles('**/Cargo.lock') }}-0001
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libsasl2-dev
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get update
+      #     sudo apt-get install -y libsasl2-dev
 
       - name: cargo tree
         run: |

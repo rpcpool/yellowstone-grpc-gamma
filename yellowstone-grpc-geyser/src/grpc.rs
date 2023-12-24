@@ -23,6 +23,7 @@ use {
             atomic::{AtomicUsize, Ordering},
             Arc,
         },
+        time::SystemTime,
     },
     tokio::{
         fs,
@@ -52,6 +53,7 @@ use {
             SubscribeUpdateBlockMeta, SubscribeUpdateEntry, SubscribeUpdatePing,
             SubscribeUpdateSlot, SubscribeUpdateTransaction, SubscribeUpdateTransactionInfo,
         },
+        prost_types::Timestamp,
     },
 };
 
@@ -1228,6 +1230,7 @@ impl Geyser for GrpcService {
             let ping_msg = SubscribeUpdate {
                 filters: vec![],
                 update_oneof: Some(UpdateOneof::Ping(SubscribeUpdatePing {})),
+                timestamp: Some(Timestamp::from(SystemTime::now())),
             };
 
             loop {
