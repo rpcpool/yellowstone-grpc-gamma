@@ -28,8 +28,8 @@ use {
 };
 
 #[derive(Debug, Clone)]
-struct InterceptorFn {
-    x_token: Option<AsciiMetadataValue>,
+pub struct InterceptorFn {
+    pub x_token: Option<AsciiMetadataValue>,
 }
 
 impl Interceptor for InterceptorFn {
@@ -65,6 +65,11 @@ pub struct GeyserGrpcClient<F> {
 }
 
 impl GeyserGrpcClient<()> {
+
+    pub const fn max_decoding_message_size() -> usize {
+        64 * 1024 * 1024 // 64 MiB
+    }
+
     fn connect2<E, T>(
         endpoint: E,
         tls_config: Option<ClientTlsConfig>,
@@ -149,6 +154,14 @@ impl GeyserGrpcClient<()> {
 }
 
 impl<F: Interceptor> GeyserGrpcClient<F> {
+
+    pub fn new(
+        health: HealthClient<InterceptedService<Channel, F>>, 
+        geyser: GeyserClient<InterceptedService<Channel, F>>
+    ) -> Self {
+        Self { health, geyser }
+    }
+
     pub async fn health_check(&mut self) -> GeyserGrpcClientResult<HealthCheckResponse> {
         let request = HealthCheckRequest {
             service: "geyser.Geyser".to_owned(),
