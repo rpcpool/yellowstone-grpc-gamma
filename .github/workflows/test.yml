@@ -9,6 +9,8 @@ on:
       - 'master'
       - 'v1.16'
       - 'v1.17'
+      - 'v1.17-gamma'
+      - 'v1.18-gamma'
   workflow_dispatch:
 
 env:

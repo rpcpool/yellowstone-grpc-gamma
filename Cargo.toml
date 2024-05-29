@@ -1,11 +1,11 @@
 [workspace]
 resolver = "2"
 members = [
-    "examples/rust", # 1.13.0+solana.1.18.21
-    "yellowstone-grpc-client", # 1.15.0+solana.1.18.21
-    "yellowstone-grpc-geyser", # 1.15.0+solana.1.18.21
-    "yellowstone-grpc-proto", # 1.14.0+solana.1.18.21
-    "yellowstone-grpc-tools", # 1.0.0-rc.11+solana.1.18.21
+    "examples/rust", # 1.13.0+solana.1.18.21.gamma
+    "yellowstone-grpc-client", # 1.15.0+solana.1.18.21.gamma
+    "yellowstone-grpc-geyser", # 1.15.0+solana.1.18.21.gamma
+    "yellowstone-grpc-proto", # 1.14.0+solana.1.18.21.gamma
+    "yellowstone-grpc-tools", # 1.0.0-rc.11+solana.1.18.21.gamma
 ]
 
 [workspace.package]
@@ -46,6 +46,7 @@ log = "0.4.17"
 maplit = "1.0.2"
 prometheus = "0.13.2"
 prost = "0.12.1"
+prost-types = "0.12.1"
 protobuf-src = "1.1.0"
 rdkafka = "0.34.0"
 scylla = "0.13.0"
@@ -69,8 +70,8 @@ tracing = "0.1.37"
 tracing-subscriber = "0.3.17"
 uuid = "1.8.0"
 vergen = "8.2.1"
-yellowstone-grpc-client = { path = "yellowstone-grpc-client", version = "=1.15.0+solana.1.18.21" }
-yellowstone-grpc-proto = { path = "yellowstone-grpc-proto", version = "=1.14.0+solana.1.18.21" }
+yellowstone-grpc-client = { path = "yellowstone-grpc-client", version = "=1.15.0+solana.1.18.21.gamma" }
+yellowstone-grpc-proto = { path = "yellowstone-grpc-proto", version = "=1.14.0+solana.1.18.21.gamma" }
 
 [profile.release]
 lto = true
