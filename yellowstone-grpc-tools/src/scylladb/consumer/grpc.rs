@@ -24,7 +24,7 @@ use {
         iter::repeat,
         pin::Pin,
         sync::Arc,
-        time::Duration,
+        time::{Duration, SystemTime},
     },
     tokio::{sync::mpsc, time::Instant},
     tokio_stream::wrappers::ReceiverStream,
@@ -33,6 +33,7 @@ use {
     uuid::Uuid,
     yellowstone_grpc_proto::{
         geyser::{subscribe_update::UpdateOneof, SubscribeUpdate},
+        prost_types::Timestamp,
         yellowstone::log::{
             yellowstone_log_server::YellowstoneLog, ConsumeRequest, EventSubscriptionPolicy,
         },
@@ -819,6 +820,7 @@ impl GrpcConsumerSource {
                     let subscribe_update = SubscribeUpdate {
                         filters: Default::default(),
                         update_oneof: Some(geyser_event),
+                        timestamp: Some(Timestamp::from(SystemTime::now())),
                     };
                     let t_send = Instant::now();
 

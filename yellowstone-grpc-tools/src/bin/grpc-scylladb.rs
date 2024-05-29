@@ -10,10 +10,7 @@ use {
     yellowstone_grpc_client::GeyserGrpcClient,
     yellowstone_grpc_proto::{
         prelude::subscribe_update::UpdateOneof,
-        yellowstone::log::{
-            yellowstone_log_server::{self, YellowstoneLog, YellowstoneLogServer},
-            EventSubscriptionPolicy,
-        },
+        yellowstone::log::{yellowstone_log_server::YellowstoneLogServer, EventSubscriptionPolicy},
     },
     yellowstone_grpc_tools::{
         config::{load as config_load, GrpcRequestToProto},
