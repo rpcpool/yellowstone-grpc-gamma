@@ -1,6 +1,6 @@
 [package]
 name = "yellowstone-grpc-proto"
-version = "2.0.0+solana.2.0.15"
+version = "2.0.0+solana.2.0.15.gamma"
 authors = { workspace = true }
 edition = { workspace = true }
 description = "Yellowstone gRPC Geyser Protobuf Definitions"
@@ -13,6 +13,7 @@ publish = true
 [dependencies]
 bincode = { workspace = true }
 prost = { workspace = true }
+prost-types = { workspace = true }
 solana-account-decoder = { workspace = true, optional = true }
 solana-sdk = { workspace = true, optional = true }
 solana-transaction-status = { workspace = true, optional = true }

@@ -11,6 +11,9 @@ on:
       - 'v1.17'
       - 'v1.18'
       - 'v2.0'
+      - 'v1.17-gamma'
+      - 'v1.18-gamma'
+      - 'v2.0-gamma'
   workflow_dispatch:
 
 env:

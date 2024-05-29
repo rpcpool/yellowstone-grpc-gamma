@@ -1,10 +1,10 @@
 [workspace]
 resolver = "2"
 members = [
-    "examples/rust", # 2.0.0+solana.2.0.15
-    "yellowstone-grpc-client", # 2.0.0+solana.2.0.15
-    "yellowstone-grpc-geyser", # 2.0.0+solana.2.0.15
-    "yellowstone-grpc-proto", # 2.0.0+solana.2.0.15
+    "examples/rust", # 2.0.0+solana.2.0.15.gamma
+    "yellowstone-grpc-client", # 2.0.0+solana.2.0.15.gamma
+    "yellowstone-grpc-geyser", # 2.0.0+solana.2.0.15.gamma
+    "yellowstone-grpc-proto", # 2.0.0+solana.2.0.15.gamma
 ]
 
 [workspace.package]
@@ -43,6 +43,7 @@ log = "0.4.17"
 maplit = "1.0.2"
 prometheus = "0.13.2"
 prost = "0.13.1"
+prost-types = "0.13.3"
 protobuf-src = "1.1.0"
 scylla = "0.13.0"
 serde = "1.0.145"
@@ -59,8 +60,8 @@ tonic = "0.12.1"
 tonic-build = "0.12.1"
 tonic-health = "0.12.1"
 vergen = "9.0.0"
-yellowstone-grpc-client = { path = "yellowstone-grpc-client", version = "2.0.0" }
-yellowstone-grpc-proto = { path = "yellowstone-grpc-proto", version = "2.0.0", default-features = false }
+yellowstone-grpc-client = { path = "yellowstone-grpc-client", version = "2.0.0+solana.2.0.15.gamma" }
+yellowstone-grpc-proto = { path = "yellowstone-grpc-proto", version = "2.0.0+solana.2.0.15.gamma", default-features = false }
 
 [workspace.lints.clippy]
 clone_on_ref_ptr = "deny"

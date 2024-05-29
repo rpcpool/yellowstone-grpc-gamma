@@ -21,7 +21,7 @@ pub mod prelude {
     pub use super::{geyser::*, solana::storage::confirmed_block::*};
 }
 
-pub use {prost, tonic};
+pub use {prost, prost_types, tonic};
 
 #[cfg(feature = "convert")]
 pub mod convert_to {
