@@ -31,7 +31,7 @@ use {
         ops::RangeInclusive,
         pin::Pin,
         sync::Arc,
-        time::Duration,
+        time::{Duration, SystemTime},
     },
     thiserror::Error,
     tokio::sync::{mpsc, oneshot},
@@ -41,6 +41,7 @@ use {
     uuid::Uuid,
     yellowstone_grpc_proto::{
         geyser::{subscribe_update::UpdateOneof, SubscribeUpdate},
+        prost_types::Timestamp,
         yellowstone::log::{
             yellowstone_log_server::YellowstoneLog, ConsumeRequest,
             CreateStaticConsumerGroupRequest, CreateStaticConsumerGroupResponse,
@@ -899,6 +900,7 @@ impl FromBlockchainEvent for GrpcEvent {
         let subscribe_update = SubscribeUpdate {
             filters: Default::default(),
             update_oneof: Some(geyser_event),
+            timestamp: Some(Timestamp::from(SystemTime::now())),
         };
 
         Ok(subscribe_update)
